@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import axios from 'axios';  
 import { BrowserRouter as Router, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import "bulma/css/bulma.css";  
+import { BASE_URL } from "../utils";
 
 const AddNotes = ({ onNoteAdded, currentNote, setCurrentNote }) => {  
   const [title, setTitle] = useState("");  
