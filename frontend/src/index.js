@@ -22,12 +22,12 @@ const AddNotes = ({ onNoteAdded, currentNote, setCurrentNote }) => {
     e.preventDefault();  
     try {  
       if (currentNote) {  
-        const response = await axios.put(`http://localhost:3000/updatenote/${currentNote.id}`, { title, content });  
+        const response = await axios.put(`${BASE_URL}/updatenote/${currentNote.id}`, { title, content });  
         if (response.status === 200) {  
           console.log("Note updated successfully");  
         }  
       } else {  
-        const response = await axios.post('http://localhost:3000/createnote', { title, content });  
+        const response = await axios.post(`${BASE_URL}/createnote`, { title, content });  
         if (response.status === 201) {  
           console.log("Note created successfully");  
         }  
@@ -83,7 +83,7 @@ const UserLists = ({ onEdit, onDelete, refresh }) => {
 
   const fetchNotes = async () => {  
     try {  
-      const response = await axios.get('http://localhost:3000/notes');  
+      const response = await axios.get(`${BASE_URL}/notes`);  
       setNotes(response.data);  
     } catch (error) {  
       console.error("Error fetching notes:", error);  
@@ -139,10 +139,10 @@ const App = () => {
 
   const handleDelete = async (id) => {  
     try {  
-      const response = await axios.delete(`http://localhost:3000/deletenote/${id}`);  
+      const response = await axios.delete(`${BASE_URL}/deletenote/${id}`);  
       if (response.status === 200) {  
         console.log("Note deleted successfully");  
-        setRefresh(prev => !prev);  // Trigger refresh to update UI
+        setRefresh(prev => !prev);
       }  
     } catch (error) {  
       console.error("Error deleting note:", error);  
@@ -179,7 +179,7 @@ const EditNotes = () => {
   const UpdateNote = async (e) => {
     e.preventDefault();
     try {
-      await axios.put(`http://localhost:3000/updatenote/${id}`, {
+      await axios.put(`${BASE_URL}/updatenote/${id}`, {
         title,
         content
       });
@@ -191,7 +191,7 @@ const EditNotes = () => {
 
   const getNotesById = async () => { 
     try {
-      const response = await axios.get(`http://localhost:3000/note/${id}`);
+      const response = await axios.get(`${BASE_URL}/note/${id}`);
       setTitle(response.data.title);
       setContent(response.data.content);
     } catch (error) {
