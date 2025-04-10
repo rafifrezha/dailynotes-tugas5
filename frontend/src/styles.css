@@ -1,0 +1,22 @@
+body {
+  color: #ffffff;
+}
+
+.title {
+  margin-bottom: 1rem;
+}
+
+.box {
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table th,
+.table td {
+  background: #3b3b3b;
+}
