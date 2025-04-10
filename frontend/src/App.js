@@ -1,4 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import UserLists from "./components/ReadNotes";
+import AddNotes from "./components/AddNotes";
+import EditNotes from "./components/EditNotes";
 
 function App() {
 return (
