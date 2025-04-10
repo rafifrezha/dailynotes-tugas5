@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';  
 import ReactDOM from 'react-dom/client';  
 import axios from 'axios';
-import MainApp from './App';
 import { BrowserRouter as Router, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import "bulma/css/bulma.css";  
 import { BASE_URL } from "./utils";
