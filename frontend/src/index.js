@@ -4,6 +4,8 @@ import axios from 'axios';
 import { BrowserRouter as Router, Route, Routes, useNavigate, useParams } from 'react-router-dom';
 import "bulma/css/bulma.css";  
 import { BASE_URL } from "./utils";
+import Login from './Login';
+import Register from './Register';
 
 const AddNotes = ({ onNoteAdded, currentNote, setCurrentNote }) => {  
   const [title, setTitle] = useState("");  
@@ -250,6 +252,8 @@ const MainApp = () => {
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/edit/:id" element={<EditNotes />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
