@@ -32,4 +32,4 @@ app.get('/health', (req, res) => {
     res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
-app.listen(5000, () => console.log('Server running on port 5000'));
+app.listen(3000, () => console.log('Server running on port 3000'));
