@@ -11,7 +11,7 @@ const app = express();
 // Configure CORS for credentials
 app.use(cors({
     origin: [
-        'https://fe-rafif-dot-f-10-pt-misbahudin.uc.r.appspot.com/'
+        'https://fe-rafif-dot-f-10-pt-misbahudin.uc.r.appspot.com'
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
