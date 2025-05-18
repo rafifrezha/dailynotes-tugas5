@@ -16,11 +16,11 @@ const Register = () => {
 
   const validatePasswords = () => {
     if (password !== confirmPassword) {
-      setPasswordError('Passwords do not match');
+      setPasswordError('Password tidak cocok');
       return false;
     }
     if (password.length < 5) {
-      setPasswordError('Password must be at least 5 characters long');
+      setPasswordError('Password minimal 5 karakter');
       return false;
     }
     setPasswordError('');
@@ -42,18 +42,18 @@ const Register = () => {
         navigate('/login');
       }
     } catch (err) {
-      setApiError(err.response?.data?.message || 'Registration failed');
+      setApiError(err.response?.data?.message || 'Registrasi gagal');
     } finally {
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="columns mt-5 is-centered">
-      <div className="column is-half">
-        <h1 className="title has-text-centered has-text-info">Buat Akun</h1>
+    <div className="columns is-centered mt-6">
+      <div className="column is-one-third">
         <div className="box has-background-dark">
-          {apiError && <div className="notification is-danger">{apiError}</div>}
+          <h1 className="title has-text-centered has-text-info">Buat Akun</h1>
+          {apiError && <div className="notification is-danger is-light">{apiError}</div>}
           <form onSubmit={handleSubmit}>
             <div className="field">
               <label className="label has-text-light">Email</label>
@@ -108,19 +108,19 @@ const Register = () => {
               </div>
               {passwordError && <p className="help is-danger">{passwordError}</p>}
             </div>
-            <div className="field">
+            <div className="field mt-4">
               <button
                 type="submit"
-                className="button is-success is-fullwidth"
+                className={`button is-success is-fullwidth ${isLoading ? 'is-loading' : ''}`}
                 disabled={isLoading}
               >
                 {isLoading ? 'Mendaftarkan...' : 'Daftar'}
               </button>
             </div>
           </form>
-          <div className="has-text-light mt-3">
+          <p className="has-text-centered has-text-grey-light mt-4">
             Sudah punya akun? <Link to="/login">Login di sini</Link>
-          </div>
+          </p>
         </div>
       </div>
     </div>
