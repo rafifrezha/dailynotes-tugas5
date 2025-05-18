@@ -1,12 +1,16 @@
 steps:
+  # 0. Set Environment Variables
+  - name: "gcr.io/cloud-builders/gsutil"
+    args: ["cp", "${_ENV}", "backend/.env"]
+
   # 1. Build Docker Images untuk backend
   - name: "gcr.io/cloud-builders/docker"
-    args: ["build", "-t", "gcr.io/$PROJECT_ID/be-rafif", "."]
+    args: ["build", "-t", "gcr.io/$PROJECT_ID/be-rafif-env", "."]
     dir: "backend"
 
   # 2. Push ke Container Registry / Artifact Registry
   - name: "gcr.io/cloud-builders/docker"
-    args: ["push", "gcr.io/$PROJECT_ID/be-rafif"]
+    args: ["push", "gcr.io/$PROJECT_ID/be-rafif-env"]
 
   # 3. Deploy ke Cloud Run
   - name: "gcr.io/cloud-builders/gcloud"
@@ -14,9 +18,9 @@ steps:
       [
         "run",
         "deploy",
-        "be-rafif",
+        "be-rafif-env",
         "--image",
-        "gcr.io/$PROJECT_ID/be-rafif",
+        "gcr.io/$PROJECT_ID/be-rafif-env",
         "--timeout",
         "1000s",
         "--port",
