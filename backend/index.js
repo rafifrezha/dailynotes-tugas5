@@ -8,33 +8,28 @@ dotenv.config();
 
 const app = express();
 
-// Konfigurasi CORS agar mendukung kredensial (cookies) dan frontend tertentu
-app.use(
-  cors({
+// Configure CORS for credentials
+app.use(cors({
     origin: [
-      'https://fe-rafif-dot-f-10-pt-misbahudin.uc.r.appspot.com',
-      // Tambahkan origin lain jika diperlukan
+        'https://fe-rafif-dot-f-10-pt-misbahudin.uc.r.appspot.com/'
     ],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-  })
-);
+    allowedHeaders: ['Content-Type', 'Authorization']
+}));
 
-// Middleware untuk parsing cookie
+// Parse cookies
 app.use(cookieParser());
 
-// Middleware untuk parsing body JSON
+// Parse JSON bodies
 app.use(express.json());
 
-// Routing
+// Use routes
 app.use(NoteRoutes);
 
-// Endpoint pengecekan server
+// Health check endpoint
 app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', message: 'Server is running' });
+    res.status(200).json({ status: 'ok', message: 'Server is running' });
 });
 
-// Jalankan server
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+app.listen(5000, () => console.log('Server running on port 5000'));
